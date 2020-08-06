@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dbsy.obe.mapper.CoursePlanMapper">
-  <!--<resultMap id="BaseResultMap" type="com.dbsy.obe.pojo.CoursePlan">
+  <resultMap id="BaseResultMap" type="com.dbsy.obe.pojo.CoursePlan">
     <constructor>
       <arg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="course_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -12,7 +12,7 @@
       <arg column="credit" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="study_term" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
-  </resultMap>-->
+  </resultMap>
   <insert id="insert" parameterType="com.dbsy.obe.pojo.CoursePlan">
     insert into course_plan (id, course_id, plan_id, 
       total_hours, theory_hours, experiment_hours, 
@@ -76,4 +76,22 @@
       </if>
     </trim>
   </insert>
+  <!--&lt;resultMap id="BaseResultMap" type="com.dbsy.obe.pojo.CoursePlan"&gt;
+    &lt;constructor&gt;
+      &lt;arg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="course_id" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="plan_id" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="total_hours" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="theory_hours" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="experiment_hours" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="credit" javaType="java.lang.Integer" jdbcType="INTEGER" /&gt;
+      &lt;arg column="study_term" javaType="java.lang.String" jdbcType="VARCHAR" /&gt;
+    &lt;/constructor&gt;
+  &lt;/resultMap&gt;-->
+  <delete id="batchRemove">
+    delete from course_plan where id in
+    <foreach item="id" collection="array" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>
