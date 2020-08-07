@@ -15,7 +15,6 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/department")
-
 public class DepartmentController {
 
     @Autowired
