@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="static :: head">
+</head>
 <body>
 <div class="container-fluid">
 
-    <div id="toolbar" class="btn-group">
-        <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
-        </button>
+        <div id="toolbar" class="btn-group">
+            <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
+            </button>
 
-        <button id="btn_delete" type="button" class="btn btn-danger" onclick="batchRemove()">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
-        </button>
-    </div>
+            <button id="btn_delete" type="button" class="btn btn-danger" onclick="batchRemove()">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
+            </button>
+        </div>
 
-    <table id="table_teacher" data-mobile-responsive="true">
-    </table>
+        <table id="table_clazz" data-mobile-responsive="true">
+        </table>
 
     <!--模态框-->
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -34,80 +35,32 @@
 
                         <input id="id" name="id" class="hidden">
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">工号：</label>
-                            <div class="col-sm-8">
-                                <input id="username" name="username" class="form-control" type="text" required>
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">密码：</label>
-                            <div class="col-sm-8">
-                                <input id="password" name="password" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">姓名：</label>
+                            <label class="col-sm-3 control-label">班级名称：</label>
                             <div class="col-sm-8">
                                 <input id="name" name="name" class="form-control" type="text" required>
                             </div>
                         </div>
 
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">性别：</label>
+                            <label class="col-sm-3 control-label">班级介绍：</label>
                             <div class="col-sm-8">
-                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="gener" name="gender" class="form-control" required>
-                                    <option value="">
-                                        --请选择--
-                                    </option>
-                                    <option value="1">
-                                        男
-                                    </option>
-                                    <option value="0">
-                                        女
-                                    </option>
-                                </select>
+                                <input id="introduce" name="introduce" class="form-control" type="text" required>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">生日：</label>
-                            <div class="col-sm-8">
-                                <input id="birthday" name="birthday" class="form-control" type="date">
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">职称：</label>
+                            <label class="col-sm-3 control-label">所属专业：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="titleId" name="titleId" class="form-control" required>
+                                <select id="majorId" name="majorId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">所属院系：</label>
-                            <div class="col-sm-8">
-                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="departmentId" name="departmentId" class="form-control" required>
-                                    <option value="">
-                                        --请选择--
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">担任职务：</label>
-                            <div class="col-sm-8">
-                                <input id="post" name="post" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
@@ -138,81 +91,30 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">工号：</label>
-                            <div class="col-sm-8">
-                                <input name="username" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">密码：</label>
-                            <div class="col-sm-8">
-                                <input name="password" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">姓名：</label>
+                            <label class="col-sm-3 control-label">班级名称：</label>
                             <div class="col-sm-8">
                                 <input name="name" class="form-control" type="text" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">性别：</label>
+                            <label class="col-sm-3 control-label">班级介绍：</label>
                             <div class="col-sm-8">
-                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="gender" class="form-control" required>
-                                    <option value="">
-                                        --请选择--
-                                    </option>
-                                    <option value="1">
-                                        男
-                                    </option>
-                                    <option value="0">
-                                        女
-                                    </option>
-                                </select>
+                                <input name="introduce" class="form-control" type="text" required>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">生日：</label>
-                            <div class="col-sm-8">
-                                <input name="birthday" class="form-control" type="date">
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">职称：</label>
+                            <label class="col-sm-3 control-label">所属专业：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="titleId" class="form-control" required>
+                                <select name="majorId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">所属院系：</label>
-                            <div class="col-sm-8">
-                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="departmentId" class="form-control" required>
-                                    <option value="">
-                                        --请选择--
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">担任职务：</label>
-                            <div class="col-sm-8">
-                                <input name="post" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
@@ -252,11 +154,13 @@
                 insert();
             }
         });
+
+
         //获取学院数据
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/department/getAll",
+            url: "/major/getAll",
             data: {},
             success: function (data) {
                 if (data.code == 1) {
@@ -270,7 +174,7 @@
                             name.append(option);
                         }
                     }*/
-                    $("select[name='departmentId']").each(function () {
+                    $("select[name='majorId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
@@ -280,41 +184,14 @@
                 }
             }
         });
-//获取职称信息
-        $.ajax({
-            //cache: true,
-            type: "POST",
-            url: "/title/getAll",
-            data: {},
-            success: function (data) {
-                if (data.code == 1) {
-                    var list = [];
-                    list = list.concat(data.data);
-                    /*for (var j = 0; j < $("select[name='titleId']").length; j++) {
-                        console.log("length:" + $("select[name='titleId']").length);
-                        $("select[name='titleId']").get(j).empty();
-                        for (var i = 0; i < list.length; i++) {
-                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
-                            $("select[name='titleId']").get(i).append(option);
-                        }
-                    }*/
-                    $("select[name='titleId']").each(function () {
-                        //$(this).text()
-                        for (var i = 0; i < list.length; i++) {
-                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
-                            $(this).append(option);
-                        }
-                    });
-                }
-            }
-        });
+
 
     });
 
     function load() {
-        $('#table_teacher')
+        $('#table_clazz')
             .bootstrapTable({
-                url: "/teacher/list",                      //请求后台的URL（*）
+                url: "/clazz/list",                      //请求后台的URL（*）
                 method: 'GET',                      //请求方式（*）
                 toolbar: '#toolbar',              //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -353,10 +230,6 @@
                     checkbox: true,
                     visible: true                  //是否显示复选框
                 }, {
-                    field: 'username',
-                    title: '工号',
-                    sortable: true
-                }, {
                     field: 'id',
                     title: 'id',
                     width: 120,
@@ -364,38 +237,64 @@
                     valign: 'middle',
                 }, {
                     field: 'name',
-                    title: '姓名',
-                }, {
-                    title: '操作',
-                    field: 'id',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        var e = '<a class="btn btn-primary btn-sm " href="#" mce_href="#"  data-toggle="modal" data-target="#edit" title="编辑" onclick="get(' + row.id + ')">编辑</a> ';
-                        var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
-                            + row.id
-                            + '\')">删除</a> ';
+                    title: '班级名称',
+                },
+                    {
+                        field: 'introduce',
+                        title: '班级简介',
+                    },
+                    {
+                        field: 'departmentId',
+                        title: '所属专业',
+                        formatter: function (value, row, index) {
+                            var department = {};
+                            if (value != null) {
+                                $.ajax({
+                                    //cache: true,
+                                    async: false,
+                                    type: "POST",
+                                    url: "/major/get/" + value,
+                                    data: {},
+                                    success: function (data) {
+                                        if (data.code == 1) {
+                                            department = data.data;
+                                        }
+                                    }
+                                });
+                            }
+                            return department.name;
+                        }
+                    }, {
+                        title: '操作',
+                        field: 'id',
+                        align: 'center',
+                        formatter: function (value, row, index) {
+                            var e = '<a class="btn btn-primary btn-sm " href="#" mce_href="#"  data-toggle="modal" data-target="#edit" title="编辑" onclick="get(' + row.id + ')">编辑</a> ';
+                            var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
+                                + row.id
+                                + '\')">删除</a> ';
 
-                        return e + d;
-                    }
-                }]
+                            return e + d;
+                        }
+                    }]
             });
     }
 
     function reLoad() {
-        $('#table_teacher').bootstrapTable('refresh');
+        $('#table_clazz').bootstrapTable('refresh');
     }
 
     function get(id) {
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/teacher/get/" + id,
+            url: "/clazz/get/" + id,
             data: {},
             success: function (data) {
                 if (data.code == 1) {
-                    var teacher = data.data;
-                    for (var key  in teacher) {
-                        $("#" + key).val(teacher[key]);
+                    var clazz = data.data;
+                    for (var key  in clazz) {
+                        $("#" + key).val(clazz[key]);
                     }
                 }
             }
@@ -407,7 +306,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/teacher/update",
+            url: "/clazz/update",
             data: $('#update').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -426,7 +325,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/teacher/insert",
+            url: "/clazz/insert",
             data: $('#insert').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -445,7 +344,7 @@
         $.ajax({
             type: 'POST',
             data: {},
-            url: "/teacher/remove/" + id,
+            url: "/clazz/remove/" + id,
             dataType: "json",
             success: function (data) {
                 if (data.code == 1) {
@@ -459,7 +358,7 @@
     }
 
     function batchRemove() {
-        var rows = $('#table_teacher').bootstrapTable('getSelections');
+        var rows = $('#table_clazz').bootstrapTable('getSelections');
         if (rows == null) {
             alert("请选中操作的行")
             return;
@@ -475,7 +374,7 @@
             data: {
                 ids: ids
             },
-            url: "/teacher/batchRemove",
+            url: "/clazz/batchRemove",
             traditional: true,//向后台传递数组时加上
             dataType: "json",
             success: function (data) {
