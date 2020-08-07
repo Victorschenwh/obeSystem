@@ -1,7 +1,7 @@
 package com.dbsy.obe.controller;
 
-import com.dbsy.obe.pojo.Department;
-import com.dbsy.obe.service.DepartmentService;
+import com.dbsy.obe.pojo.CoursePoint;
+import com.dbsy.obe.service.CoursePointService;
 import com.dbsy.obe.util.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,18 +14,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/department")
-
-public class DepartmentController {
+@RequestMapping("/coursePoint")
+public class CoursePointController {
 
     @Autowired
-    @Qualifier("departmentServiceImp")
-    DepartmentService departmentService;
+    @Qualifier("CoursePointServiceImp")
+    CoursePointService coursePointService;
 
 
     @RequestMapping("")
-    public String department() {
-        return "department";
+    public String coursePoint() {
+        return "coursePoint";
     }
 
 
@@ -33,15 +32,15 @@ public class DepartmentController {
     @ResponseBody
     public Map list(Map map) {
         Map m = new HashMap();
-        m.put("total", departmentService.listCount(map));
-        m.put("rows", departmentService.list(map));
+        m.put("total", coursePointService.listCount(map));
+        m.put("rows", coursePointService.list(map));
         return m;
     }
 
     @ResponseBody
     @RequestMapping("/remove/{id}")
     public Map remove(@PathVariable("id") int id) {
-        if (departmentService.delete(id) > 0) {
+        if (coursePointService.delete(id) > 0) {
             return News.success();
         }
         return News.fail("删除失败");
@@ -51,7 +50,7 @@ public class DepartmentController {
     @RequestMapping("/batchRemove")
     public Map batchRemove(int[] ids) {
 
-        if (departmentService.batchRemove(ids) == ids.length) {
+        if (coursePointService.batchRemove(ids) == ids.length) {
             return News.success();
         }
         return News.fail("删除失败");
@@ -59,8 +58,8 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping("/insert")
-    public Map insert(Department department) {
-        if (departmentService.insert(department) > 0) {
+    public Map insert(CoursePoint coursePoint) {
+        if (coursePointService.insert(coursePoint) > 0) {
             return News.success();
         }
         return News.fail("添加失败");
@@ -68,8 +67,8 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping("/update")
-    public Map update(Department department) {
-        if (departmentService.update(department) > 0) {
+    public Map update(CoursePoint coursePoint) {
+        if (coursePointService.update(coursePoint) > 0) {
             return News.success();
         }
         return News.fail("添加失败");
@@ -78,13 +77,13 @@ public class DepartmentController {
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
-        return News.success("成功", departmentService.get(id));
+        return News.success("成功", coursePointService.get(id));
     }
 
     @RequestMapping("/getAll")
     @ResponseBody
     public Map getAll() {
-        return News.success("学院数据请求成功", departmentService.getAll());
+        return News.success("成功", coursePointService.getAll());
     }
 
 
