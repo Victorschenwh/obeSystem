@@ -88,6 +88,10 @@
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
+        <table tableName="target" domainObjectName="Target"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
 
       <!--  <table tableName="plan" domainObjectName="Plan"
                enableCountByExample="false" enableUpdateByExample="false"
