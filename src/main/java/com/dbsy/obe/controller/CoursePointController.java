@@ -24,7 +24,7 @@ public class CoursePointController {
 
     @RequestMapping("")
     public String coursePoint() {
-        return "coursePoint";
+        return "baseInfo/coursePoint";
     }
 
 

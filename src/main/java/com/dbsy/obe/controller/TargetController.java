@@ -1,7 +1,5 @@
 package com.dbsy.obe.controller;
 
-import com.dbsy.obe.annotation.Authority;
-import com.dbsy.obe.myenum.Role;
 import com.dbsy.obe.pojo.Target;
 import com.dbsy.obe.service.TargetService;
 import com.dbsy.obe.util.News;
@@ -25,7 +23,7 @@ public class TargetController {
 
     @RequestMapping("")
     public String target() {
-        return "target";
+        return "baseInfo/target";
     }
 
 

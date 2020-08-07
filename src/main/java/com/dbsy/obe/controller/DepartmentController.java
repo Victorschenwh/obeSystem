@@ -25,7 +25,7 @@ public class DepartmentController {
 
     @RequestMapping("")
     public String department() {
-        return "department";
+        return "baseInfo/department";
     }
 
 

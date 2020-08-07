@@ -23,7 +23,7 @@ public class RequirementController {
 
     @RequestMapping("")
     public String requirement() {
-        return "requirement";
+        return "baseInfo/requirement";
     }
 
 

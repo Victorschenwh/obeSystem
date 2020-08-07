@@ -1,7 +1,5 @@
 package com.dbsy.obe.controller;
 
-import com.dbsy.obe.annotation.Authority;
-import com.dbsy.obe.myenum.Role;
 import com.dbsy.obe.pojo.Title;
 import com.dbsy.obe.service.TitleService;
 import com.dbsy.obe.util.News;
@@ -25,7 +23,7 @@ public class TitleController {
 
     @RequestMapping("")
     public String title() {
-        return "title";
+        return "baseInfo/title";
     }
 
 

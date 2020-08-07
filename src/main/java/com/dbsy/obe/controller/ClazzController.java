@@ -1,9 +1,7 @@
 package com.dbsy.obe.controller;
 
 import com.dbsy.obe.pojo.Clazz;
-import com.dbsy.obe.pojo.Teacher;
 import com.dbsy.obe.service.ClazzService;
-import com.dbsy.obe.service.TeacherService;
 import com.dbsy.obe.util.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +23,7 @@ public class ClazzController {
 
     @RequestMapping("")
     public String clazz() {
-        return "clazz";
+        return "baseInfo/clazz";
     }
 
 
