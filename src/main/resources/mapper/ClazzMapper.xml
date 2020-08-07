@@ -55,7 +55,7 @@
         &lt;/constructor&gt;
     &lt;/resultMap&gt;-->
 
-  <select id="list" resultType="com.dbsy.obe.pojo.Major">
+  <select id="list" resultType="com.dbsy.obe.pojo.Clazz">
     select * from clazz
     <where>
       <if test="name != null">
