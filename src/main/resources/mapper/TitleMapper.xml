@@ -39,4 +39,38 @@
       </if>
     </trim>
   </insert>
+
+  <select id="list" resultType="com.dbsy.obe.pojo.Title">
+    select * from title
+    <where>
+      <if test="name != null">
+        or name like concat('%',#{name},'%')
+      </if>
+      <if test="username != null">
+        or username like concat('%',#{username},'%')
+      </if>
+    </where>
+    <if test="page!=null and pageSize != null">
+      limit (#{page}-1)* #{pageSize},#{pageSize}
+    </if>
+  </select>
+
+  <select id="listCount" resultType="int">
+    select count(*) from title
+    <where>
+      <if test="name != null">
+        or name like concat('%',#{name},'%')
+      </if>
+      <if test="username != null">
+        or username like concat('%',#{username},'%')
+      </if>
+    </where>
+  </select>
+
+  <delete id="batchRemove">
+    delete from title where id in
+    <foreach item="id" collection="array" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>
