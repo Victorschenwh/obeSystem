@@ -262,14 +262,7 @@
                 if (data.code == 1) {
                     var list = [];
                     list = list.concat(data.data);
-                    /*for (var j = 0; j < $("select[name='departmentId']").length; j++) {
-                        var name = $("select[name='departmentId']").get(j);
-                        name.empty();
-                        for (var i = 0; i < list.length; i++) {
-                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
-                            name.append(option);
-                        }
-                    }*/
+
                     $("select[name='departmentId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
@@ -290,14 +283,7 @@
                 if (data.code == 1) {
                     var list = [];
                     list = list.concat(data.data);
-                    /*for (var j = 0; j < $("select[name='titleId']").length; j++) {
-                        console.log("length:" + $("select[name='titleId']").length);
-                        $("select[name='titleId']").get(j).empty();
-                        for (var i = 0; i < list.length; i++) {
-                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
-                            $("select[name='titleId']").get(i).append(option);
-                        }
-                    }*/
+
                     $("select[name='titleId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
@@ -357,14 +343,64 @@
                     title: '工号',
                     sortable: true
                 }, {
-                    field: 'id',
-                    title: 'id',
-                    width: 120,
-                    align: 'center',
-                    valign: 'middle',
-                }, {
                     field: 'name',
                     title: '姓名',
+                }, {
+                    field: 'gender',
+                    title: '性别',
+                    formatter: function (value, row, index) {
+                        return value ? "男" : "女";
+                    }
+                }, {
+                    field: 'birthday',
+                    title: '生日',
+                }, {
+                    field: 'post',
+                    title: '担任职务',
+                }, {
+                    field: 'departmentId',
+                    title: '所属院系',
+                    formatter: function (value, row, index) {
+                        var department = {};
+                        if (value != null) {
+                            $.ajax({
+                                //cache: true,
+                                async: false,
+                                type: "POST",
+                                url: "/department/get/" + value,
+                                dataType: "json",
+                                data: {},
+                                success: function (data) {
+                                    if (data.code == 1) {
+                                        department = data.data;
+                                    }
+                                }
+                            });
+                        }
+                        return department != null ? department.name : "";
+                    }
+                }, {
+                    field: 'titleId',
+                    title: '职称',
+                    formatter: function (value, row, index) {
+                        var title = {};
+                        if (value != null) {
+                            $.ajax({
+                                //cache: true,
+                                async: false,
+                                type: "POST",
+                                url: "/title/get/" + value,
+                                dataType: "json",
+                                data: {},
+                                success: function (data) {
+                                    if (data.code == 1) {
+                                        title = data.data;
+                                    }
+                                }
+                            });
+                        }
+                        return title != null ? title.name : "";
+                    }
                 }, {
                     title: '操作',
                     field: 'id',
