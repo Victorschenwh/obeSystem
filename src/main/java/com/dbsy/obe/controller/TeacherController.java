@@ -1,7 +1,5 @@
 package com.dbsy.obe.controller;
 
-import com.dbsy.obe.annotation.Authority;
-import com.dbsy.obe.myenum.Role;
 import com.dbsy.obe.pojo.Teacher;
 import com.dbsy.obe.service.TeacherService;
 import com.dbsy.obe.util.News;
@@ -25,7 +23,7 @@ public class TeacherController {
 
     @RequestMapping("")
     public String teacher() {
-        return "teacher";
+        return "baseInfo/teacher";
     }
 
 

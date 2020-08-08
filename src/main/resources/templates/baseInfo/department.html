@@ -15,8 +15,9 @@
         </button>
     </div>
 
-    <table id="table_plan" data-mobile-responsive="true">
+    <table id="table_department" data-mobile-responsive="true">
     </table>
+
 
     <!--模态框-->
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -36,39 +37,25 @@
                         <input id="id" name="id" class="hidden">
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">培养方案名称：</label>
-                            <div class="col-sm-8">
-                                <input id="name" name="name" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">培养方案版本：</label>
-                            <div class="col-sm-8">
-                                <input id="year" name="year" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">培养目标简介：</label>
-                            <div class="col-sm-8">
-                                <input id="introduce" name="introduce" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">所属专业：</label>
+                            <label class="col-sm-3 control-label">学院名称：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="majorId" name="majorId" class="form-control" required>
+                                <select id="departmentId" name="departmentId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
                                 </select>
                             </div>
                         </div>
-                    </div>
 
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学院介绍：</label>
+                            <div class="col-sm-8">
+                                <input id="introduce" name="introduce" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
                                 data-dismiss="modal">关闭
@@ -96,37 +83,22 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">培养方案名称：</label>
-                            <div class="col-sm-8">
-                                <input name="name" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">培养方案版本：</label>
-                            <div class="col-sm-8">
-                                <input name="year" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">培养方案介绍：</label>
-                            <div class="col-sm-8">
-                                <input name="introduce" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">所属专业：</label>
+                            <label class="col-sm-3 control-label">学院名称：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="majorId" class="form-control" required>
+                                <select name="departmentId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学院介绍：</label>
+                            <div class="col-sm-8">
+                                <input name="introduce" class="form-control" type="text" required>
                             </div>
                         </div>
 
@@ -143,6 +115,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
 
 </div>
 <div th:replace="static :: script"></div>
@@ -167,11 +140,13 @@
                 insert();
             }
         });
+
+
         //获取学院数据
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/major/getAll",
+            url: "/department/getAll",
             data: {},
             success: function (data) {
                 if (data.code == 1) {
@@ -185,7 +160,7 @@
                             name.append(option);
                         }
                     }*/
-                    $("select[name='majorId']").each(function () {
+                    $("select[name='departmentId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
@@ -200,9 +175,9 @@
     });
 
     function load() {
-        $('#table_plan')
+        $('#table_department')
             .bootstrapTable({
-                url: "/plan/list",                      //请求后台的URL（*）
+                url: "/department/list",                      //请求后台的URL（*）
                 method: 'GET',                      //请求方式（*）
                 toolbar: '#toolbar',              //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -241,66 +216,66 @@
                     checkbox: true,
                     visible: true                  //是否显示复选框
                 }, {
-                    field: 'name',
-                    title: '培养方案名称',
-                }, {
-                    field: 'year',
-                    title: '培养方案版本',
-                }, {
-                    field: 'introduce',
-                    title: '培养方案介绍',
-                }, {
-                    field: 'majorId',
-                    title: '专业名称名称',
+                    field: 'id',
+                    title: 'id',
+                    width: 120,
+                    align: 'center',
+                    valign: 'middle',
+                },  {
+                    field: 'departmentId',
+                    title: '学院名称',
                     formatter: function (value, row, index) {
-                        var major = {};
+                        var department = {};
                         if (value != null) {
                             $.ajax({
                                 //cache: true,
                                 async: false,
                                 type: "POST",
-                                url: "/major/get/" + value,
+                                url: "/department/get/" + value,
                                 data: {},
                                 success: function (data) {
                                     if (data.code == 1) {
-                                        major = data.data;
+                                        department = data.data;
                                     }
                                 }
                             });
                         }
-                        return major.name;
+                        return department.name;
                     }
-                }, {
-                    title: '操作',
-                    field: 'id',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        var e = '<a class="btn btn-primary btn-sm " href="#" mce_href="#"  data-toggle="modal" data-target="#edit" title="编辑" onclick="get(' + row.id + ')">编辑</a> ';
-                        var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
-                            + row.id
-                            + '\')">删除</a> ';
+                },{
+                        field: 'introduce',
+                        title: '学院简介',
+                    }, {
+                        title: '操作',
+                        field: 'id',
+                        align: 'center',
+                        formatter: function (value, row, index) {
+                            var e = '<a class="btn btn-primary btn-sm " href="#" mce_href="#"  data-toggle="modal" data-target="#edit" title="编辑" onclick="get(' + row.id + ')">编辑</a> ';
+                            var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
+                                + row.id
+                                + '\')">删除</a> ';
 
-                        return e + d;
-                    }
-                }]
+                            return e + d;
+                        }
+                    }]
             });
     }
 
     function reLoad() {
-        $('#table_plan').bootstrapTable('refresh');
+        $('#table_department').bootstrapTable('refresh');
     }
 
     function get(id) {
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/plan/get/" + id,
+            url: "/department/get/" + id,
             data: {},
             success: function (data) {
                 if (data.code == 1) {
-                    var plan = data.data;
-                    for (var key  in plan) {
-                        $("#" + key).val(plan[key]);
+                    var department = data.data;
+                    for (var key  in department) {
+                        $("#" + key).val(department[key]);
                     }
                 }
             }
@@ -312,7 +287,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/plan/update",
+            url: "/department/update",
             data: $('#update').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -331,7 +306,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/plan/insert",
+            url: "/department/insert",
             data: $('#insert').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -350,7 +325,7 @@
         $.ajax({
             type: 'POST',
             data: {},
-            url: "/plan/remove/" + id,
+            url: "/department/remove/" + id,
             dataType: "json",
             success: function (data) {
                 if (data.code == 1) {
@@ -364,7 +339,7 @@
     }
 
     function batchRemove() {
-        var rows = $('#table_plan').bootstrapTable('getSelections');
+        var rows = $('#table_department').bootstrapTable('getSelections');
         if (rows == null) {
             alert("请选中操作的行")
             return;
@@ -380,7 +355,7 @@
             data: {
                 ids: ids
             },
-            url: "/plan/batchRemove",
+            url: "/department/batchRemove",
             traditional: true,//向后台传递数组时加上
             dataType: "json",
             success: function (data) {

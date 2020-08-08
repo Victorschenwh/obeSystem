@@ -1,7 +1,7 @@
 package com.dbsy.obe.controller;
 
-import com.dbsy.obe.pojo.Clazz;
-import com.dbsy.obe.service.ClazzService;
+import com.dbsy.obe.pojo.CoursePoint;
+import com.dbsy.obe.service.CoursePointService;
 import com.dbsy.obe.util.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,16 +14,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/clazz")
-public class ClazzController {
+@RequestMapping("/coursePoint")
+public class CoursePointController {
 
     @Autowired
-    @Qualifier("clazzServiceImp")
-    ClazzService clazzService;
+    @Qualifier("CoursePointServiceImp")
+    CoursePointService coursePointService;
+
 
     @RequestMapping("")
-    public String clazz() {
-        return "baseInfo/clazz";
+    public String coursePoint() {
+        return "baseInfo/coursePoint";
     }
 
 
@@ -31,17 +32,15 @@ public class ClazzController {
     @ResponseBody
     public Map list(Map map) {
         Map m = new HashMap();
-        m.put("total", clazzService.listCount(map));
-        m.put("rows", clazzService.list(map));
+        m.put("total", coursePointService.listCount(map));
+        m.put("rows", coursePointService.list(map));
         return m;
     }
-
-
 
     @ResponseBody
     @RequestMapping("/remove/{id}")
     public Map remove(@PathVariable("id") int id) {
-        if (clazzService.delete(id) > 0) {
+        if (coursePointService.delete(id) > 0) {
             return News.success();
         }
         return News.fail("删除失败");
@@ -51,7 +50,7 @@ public class ClazzController {
     @RequestMapping("/batchRemove")
     public Map batchRemove(int[] ids) {
 
-        if (clazzService.batchRemove(ids) == ids.length) {
+        if (coursePointService.batchRemove(ids) == ids.length) {
             return News.success();
         }
         return News.fail("删除失败");
@@ -59,8 +58,8 @@ public class ClazzController {
 
     @ResponseBody
     @RequestMapping("/insert")
-    public Map insert(Clazz clazz) {
-        if (clazzService.insert(clazz) > 0) {
+    public Map insert(CoursePoint coursePoint) {
+        if (coursePointService.insert(coursePoint) > 0) {
             return News.success();
         }
         return News.fail("添加失败");
@@ -68,8 +67,8 @@ public class ClazzController {
 
     @ResponseBody
     @RequestMapping("/update")
-    public Map update(Clazz clazz) {
-        if (clazzService.update(clazz) > 0) {
+    public Map update(CoursePoint coursePoint) {
+        if (coursePointService.update(coursePoint) > 0) {
             return News.success();
         }
         return News.fail("添加失败");
@@ -78,12 +77,14 @@ public class ClazzController {
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
-        return News.success("成功", clazzService.get(id));
+        return News.success("成功", coursePointService.get(id));
     }
 
-    @ResponseBody
     @RequestMapping("/getAll")
+    @ResponseBody
     public Map getAll() {
-        return News.success("成功", clazzService.getAll());
+        return News.success("成功", coursePointService.getAll());
     }
+
+
 }

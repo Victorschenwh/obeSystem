@@ -22,7 +22,7 @@ public class MajorController {
 
     @RequestMapping("")
     public String major() {
-        return "major";
+        return "baseInfo/major";
     }
 
 

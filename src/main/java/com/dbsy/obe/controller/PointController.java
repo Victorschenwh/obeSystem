@@ -21,7 +21,7 @@ public class PointController {
 
     @RequestMapping("")
     public String major() {
-        return "point";
+        return "baseInfo/point";
     }
 
 

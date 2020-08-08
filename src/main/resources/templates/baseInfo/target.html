@@ -1,124 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="static :: head">
-</head>
 <body>
 <div class="container-fluid">
 
-        <div id="toolbar" class="btn-group">
-            <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
-            </button>
+    <div id="toolbar" class="btn-group">
+        <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
+        </button>
 
-            <button id="btn_delete" type="button" class="btn btn-danger" onclick="batchRemove()">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
-            </button>
-        </div>
+        <button id="btn_delete" type="button" class="btn btn-danger" onclick="batchRemove()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
+        </button>
+    </div>
 
-        <table id="table_point" data-mobile-responsive="true">
-        </table>
+    <table id="table_target" data-mobile-responsive="true">
+    </table>
 
-
-    <!--模态框-->
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form class="form-horizontal" id="update">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            修改
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <input id="id" name="id" class="hidden">
-
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">观测点简介：</label>
-                            <div class="col-sm-8">
-                                <input id="introduction" name="introduction" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">毕业要求：</label>
-                            <div class="col-sm-8">
-                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="requirementId" name="requirementId" class="form-control" required>
-                                    <option value="">
-                                        --请选择--
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">关闭
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            确定
-                        </button>
-                    </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <!--模态框-->
-    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form class="form-horizontal" id="insert">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">×
-                        </button>
-                        <h4 class="modal-title">
-                            增加
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">观测点简介：</label>
-                            <div class="col-sm-8">
-                                <input name="introduction" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">毕业要求：</label>
-                            <div class="col-sm-8">
-                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="requirementId" class="form-control" required>
-                                    <option value="">
-                                        --请选择--
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">关闭
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            确定
-                        </button>
-                    </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
 </div>
 <div th:replace="static :: script"></div>
@@ -143,25 +41,25 @@
                 insert();
             }
         });
-        //获取毕业要求数据
+        //获取plan数据
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/requirement/getAll",
+            url: "/plan/getAll",
             data: {},
             success: function (data) {
                 if (data.code == 1) {
                     var list = [];
                     list = list.concat(data.data);
-                    /*for (var j = 0; j < $("select[name='departmentId']").length; j++) {
-                        var name = $("select[name='departmentId']").get(j);
+                    /*for (var j = 0; j < $("select[name='planId']").length; j++) {
+                        var name = $("select[name='planId']").get(j);
                         name.empty();
                         for (var i = 0; i < list.length; i++) {
                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
                             name.append(option);
                         }
                     }*/
-                    $("select[name='requirementId']").each(function () {
+                    $("select[name='planId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
@@ -171,14 +69,41 @@
                 }
             }
         });
-
+//获取职称信息
+//         $.ajax({
+//             //cache: true,
+//             type: "POST",
+//             url: "/title/getAll",
+//             data: {},
+//             success: function (data) {
+//                 if (data.code == 1) {
+//                     var list = [];
+//                     list = list.concat(data.data);
+//                     /*for (var j = 0; j < $("select[name='titleId']").length; j++) {
+//                         console.log("length:" + $("select[name='titleId']").length);
+//                         $("select[name='titleId']").get(j).empty();
+//                         for (var i = 0; i < list.length; i++) {
+//                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
+//                             $("select[name='titleId']").get(i).append(option);
+//                         }
+//                     }*/
+//                     $("select[name='titleId']").each(function () {
+//                         //$(this).text()
+//                         for (var i = 0; i < list.length; i++) {
+//                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
+//                             $(this).append(option);
+//                         }
+//                     });
+//                 }
+//             }
+//         });
 
     });
 
     function load() {
-        $('#table_point')
+        $('#table_target')
             .bootstrapTable({
-                url: "/point/list",                      //请求后台的URL（*）
+                url: "/target/list",                      //请求后台的URL（*）
                 method: 'GET',                      //请求方式（*）
                 toolbar: '#toolbar',              //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -217,29 +142,18 @@
                     checkbox: true,
                     visible: true                  //是否显示复选框
                 }, {
-                    field: 'introduction',
-                    title: '观测点简介',
+                    field: 'synopsis',
+                    title: '概要',
+                    sortable: true
                 }, {
-                    field: 'requirementId',
-                    title: '毕业要求名称',
-                    formatter: function (value, row, index) {
-                        var requirement = {};
-                        if (value != null) {
-                            $.ajax({
-                                //cache: true,
-                                async: false,
-                                type: "POST",
-                                url: "/requirement/get/" + value,
-                                data: {},
-                                success: function (data) {
-                                    if (data.code == 1) {
-                                        requirement = data.data;
-                                    }
-                                }
-                            });
-                        }
-                        return requirement.synopsis;
-                    }
+                    field: 'id',
+                    title: 'id',
+                    width: 120,
+                    align: 'center',
+                    valign: 'middle',
+                }, {
+                    field: 'introduction',
+                    title: '介绍',
                 }, {
                     title: '操作',
                     field: 'id',
@@ -257,20 +171,20 @@
     }
 
     function reLoad() {
-        $('#table_point').bootstrapTable('refresh');
+        $('#table_target').bootstrapTable('refresh');
     }
 
     function get(id) {
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/point/get/" + id,
+            url: "/target/get/" + id,
             data: {},
             success: function (data) {
                 if (data.code == 1) {
-                    var point = data.data;
-                    for (var key  in point) {
-                        $("#" + key).val(point[key]);
+                    var target = data.data;
+                    for (var key  in target) {
+                        $("#" + key).val(target[key]);
                     }
                 }
             }
@@ -282,7 +196,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/point/update",
+            url: "/target/update",
             data: $('#update').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -301,7 +215,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/point/insert",
+            url: "/target/insert",
             data: $('#insert').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -320,7 +234,7 @@
         $.ajax({
             type: 'POST',
             data: {},
-            url: "/point/remove/" + id,
+            url: "/target/remove/" + id,
             dataType: "json",
             success: function (data) {
                 if (data.code == 1) {
@@ -334,7 +248,7 @@
     }
 
     function batchRemove() {
-        var rows = $('#table_point').bootstrapTable('getSelections');
+        var rows = $('#table_target').bootstrapTable('getSelections');
         if (rows == null) {
             alert("请选中操作的行")
             return;
@@ -350,7 +264,7 @@
             data: {
                 ids: ids
             },
-            url: "/point/batchRemove",
+            url: "/target/batchRemove",
             traditional: true,//向后台传递数组时加上
             dataType: "json",
             success: function (data) {

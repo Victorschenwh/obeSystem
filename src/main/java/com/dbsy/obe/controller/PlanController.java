@@ -21,7 +21,7 @@ public class PlanController {
 
     @RequestMapping("")
     public String major() {
-        return "plan";
+        return "baseInfo/plan";
     }
 
 
