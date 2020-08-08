@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("coursePlanServiceImp")
 public class CoursePlanServiceImp implements CoursePlanService {
@@ -22,6 +23,16 @@ public class CoursePlanServiceImp implements CoursePlanService {
     @Override
     public int insertSelective(CoursePlan record) {
         return this.coursePlanMapper.insertSelective(record);
+    }
+
+    @Override
+    public int listCount(Map map) {
+        return this.coursePlanMapper.listCount(map);
+    }
+
+    @Override
+    public List<CoursePlan> list(Map map) {
+        return this.coursePlanMapper.list(map);
     }
 
     @Override

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -20,6 +21,24 @@ public class CourseController {
     @Autowired
     @Qualifier("courseServiceImp")
     CourseService courseService;
+
+
+    @RequestMapping("")
+    public String course() {
+        return "course";
+    }
+
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public Map list(Map map) {
+        Map m = new HashMap();
+        m.put("total", courseService.listCount(map));
+        m.put("rows", courseService.list(map));
+        return m;
+    }
+
+
 
 
     @ResponseBody

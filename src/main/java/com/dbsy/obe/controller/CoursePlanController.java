@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -19,6 +20,24 @@ public class CoursePlanController {
     @Autowired
     @Qualifier("coursePlanServiceImp")
     CoursePlanService coursePlanService;
+
+
+
+    @RequestMapping("")
+    public String coursePlan() {
+        return "coursePlan";
+    }
+
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public Map list(Map map) {
+        Map m = new HashMap();
+        m.put("total", coursePlanService.listCount(map));
+        m.put("rows", coursePlanService.list(map));
+        return m;
+    }
+
 
 
     @ResponseBody

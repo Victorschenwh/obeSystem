@@ -15,7 +15,7 @@
             </button>
         </div>
 
-        <table id="table_clazz" data-mobile-responsive="true">
+        <table id="table_coursePlan" data-mobile-responsive="true">
         </table>
 
     <!--模态框-->
@@ -37,32 +37,75 @@
 
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">班级名称：</label>
-                            <div class="col-sm-8">
-                                <input id="name" name="name" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">班级介绍：</label>
-                            <div class="col-sm-8">
-                                <input id="introduce" name="introduce" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">所属专业：</label>
+                            <label class="col-sm-3 control-label">培养方案名称：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="majorId" name="majorId" class="form-control" required>
+                                <select id="planId" name="planId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
                                 </select>
                             </div>
                         </div>
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-sm-3 control-label">培养方案名称：</label>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <input id="planId" name="planId" class="form-control" type="text" required>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程名称：</label>
+                            <div class="col-sm-8">
+                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
+                                <select id="courseId" name="courseId" class="form-control" required>
+                                    <option value="">
+                                        --请选择--
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-sm-3 control-label">课程名称：</label>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <input id="courseId" name="courseId" class="form-control" type="text" required>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程总时长：</label>
+                            <div class="col-sm-8">
+                                <input id="totalHours" name="totalHours" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">理论课程时长：</label>
+                            <div class="col-sm-8">
+                                <input value="单位：h" id="theoryHours" name="theoryHours" class="form-control" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">实践课程时长：</label>
+                            <div class="col-sm-8">
+                                <input id="experimentHours" name="experimentHours" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程成绩：</label>
+                            <div class="col-sm-8">
+                                <input id="credit" name="credit" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学期：</label>
+                            <div class="col-sm-8">
+                                <input id="studyTerm" name="studyTerm" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
@@ -91,32 +134,78 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">班级名称：</label>
-                            <div class="col-sm-8">
-                                <input name="name" class="form-control" type="text" required>
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">班级介绍：</label>
-                            <div class="col-sm-8">
-                                <input name="introduce" class="form-control" type="text" required>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">所属专业：</label>
+                            <label class="col-sm-3 control-label">培养方案名称：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="majorId" class="form-control" required>
+                                <select name="planId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
                                 </select>
                             </div>
                         </div>
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-sm-3 control-label">培养方案名称：</label>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <input name="planId" class="form-control" type="text" required>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程名称：</label>
+                            <div class="col-sm-8">
+                                <!--<input id="gender" name="gender" class="form-control" type="text">-->
+                                <select name="courseId" class="form-control" required>
+                                    <option value="">
+                                        --请选择--
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-sm-3 control-label">课程名称：</label>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <input name="courseId" class="form-control" type="text" required>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程总时长：</label>
+                            <div class="col-sm-8">
+                                <input  name="totalHours" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">理论课程时长：</label>
+                            <div class="col-sm-8">
+                                <input  name="theoryHours" class="form-control" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">实践课程时长：</label>
+                            <div class="col-sm-8">
+                                <input  name="experimentHours" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">课程成绩：</label>
+                            <div class="col-sm-8">
+                                <input  name="credit" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学期：</label>
+                            <div class="col-sm-8">
+                                <input  name="studyTerm" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
@@ -156,11 +245,11 @@
         });
 
 
-        //获取学院数据
+        //获取课程数据
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/major/getAll",
+            url: "/course/getAll",
             data: {},
             success: function (data) {
                 if (data.code == 1) {
@@ -174,7 +263,35 @@
                             name.append(option);
                         }
                     }*/
-                    $("select[name='majorId']").each(function () {
+                    $("select[name='courseId']").each(function () {
+                        //$(this).text()
+                        for (var i = 0; i < list.length; i++) {
+                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
+                            $(this).append(option);
+                        }
+                    });
+                }
+            }
+        });
+        //获取计划信息
+        $.ajax({
+            //cache: true,
+            type: "POST",
+            url: "/plan/getAll",
+            data: {},
+            success: function (data) {
+                if (data.code == 1) {
+                    var list = [];
+                    list = list.concat(data.data);
+                    /*for (var j = 0; j < $("select[name='departmentId']").length; j++) {
+                        var name = $("select[name='departmentId']").get(j);
+                        name.empty();
+                        for (var i = 0; i < list.length; i++) {
+                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
+                            name.append(option);
+                        }
+                    }*/
+                    $("select[name='planId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
@@ -189,9 +306,9 @@
     });
 
     function load() {
-        $('#table_clazz')
+        $('#table_coursePlan')
             .bootstrapTable({
-                url: "/clazz/list",                      //请求后台的URL（*）
+                url: "/coursePlan/list",                      //请求后台的URL（*）
                 method: 'GET',                      //请求方式（*）
                 toolbar: '#toolbar',              //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -236,35 +353,71 @@
                     align: 'center',
                     valign: 'middle',
                 }, {
-                    field: 'name',
-                    title: '班级名称',
+                    field: 'planId',
+                    title: '培养方案名称',
+
+                    formatter: function (value, row, index) {
+                        var plan = {};
+                        if (value != null) {
+                            $.ajax({
+                                //cache: true,
+                                async: false,
+                                type: "POST",
+                                url: "/plan/get/" + value,
+                                data: {},
+                                success: function (data) {
+                                    if (data.code == 1) {
+                                        plan = data.data;
+                                    }
+                                }
+                            });
+                        }
+                        return plan.name;
+                    }
                 },
                     {
-                        field: 'introduce',
-                        title: '班级简介',
-                    },
-                    {
-                        field: 'majorId',
-                        title: '所属专业',
+                        field: 'courseId',
+                        title: '课程名称',
+
                         formatter: function (value, row, index) {
-                            var major = {};
+                            var course = {};
                             if (value != null) {
                                 $.ajax({
                                     //cache: true,
                                     async: false,
                                     type: "POST",
-                                    url: "/major/get/" + value,
+                                    url: "/course/get/" + value,
                                     data: {},
                                     success: function (data) {
                                         if (data.code == 1) {
-                                            major = data.data;
+                                            course = data.data;
                                         }
                                     }
                                 });
                             }
-                            return major.name;
+                            return course.name;
                         }
-                    }, {
+                    },
+                    {
+                        field: 'totalHours',
+                        title: '课程总时长',
+                    },
+                    {
+                        field: 'theoryHours',
+                        title: '理论课程时长',
+                    },
+                    {
+                        field: 'experimentHours',
+                        title: '实践课程时长',
+                    },
+                    {
+                        field: 'credit',
+                        title: '课程成绩',
+                    },
+                    {
+                        field: 'studyTerm',
+                        title: '学期',
+                    },{
                         title: '操作',
                         field: 'id',
                         align: 'center',
@@ -281,20 +434,20 @@
     }
 
     function reLoad() {
-        $('#table_clazz').bootstrapTable('refresh');
+        $('#table_coursePlan').bootstrapTable('refresh');
     }
 
     function get(id) {
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/clazz/get/" + id,
+            url: "/coursePlan/get/" + id,
             data: {},
             success: function (data) {
                 if (data.code == 1) {
-                    var clazz = data.data;
-                    for (var key  in clazz) {
-                        $("#" + key).val(clazz[key]);
+                    var course = data.data;
+                    for (var key  in course) {
+                        $("#" + key).val(course[key]);
                     }
                 }
             }
@@ -306,7 +459,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/clazz/update",
+            url: "/coursePlan/update",
             data: $('#update').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -325,7 +478,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/clazz/insert",
+            url: "/coursePlan/insert",
             data: $('#insert').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -344,7 +497,7 @@
         $.ajax({
             type: 'POST',
             data: {},
-            url: "/clazz/remove/" + id,
+            url: "/coursePlan/remove/" + id,
             dataType: "json",
             success: function (data) {
                 if (data.code == 1) {
@@ -358,7 +511,7 @@
     }
 
     function batchRemove() {
-        var rows = $('#table_clazz').bootstrapTable('getSelections');
+        var rows = $('#table_coursePlan').bootstrapTable('getSelections');
         if (rows == null) {
             alert("请选中操作的行")
             return;
@@ -374,7 +527,7 @@
             data: {
                 ids: ids
             },
-            url: "/clazz/batchRemove",
+            url: "/coursePlan/batchRemove",
             traditional: true,//向后台传递数组时加上
             dataType: "json",
             success: function (data) {

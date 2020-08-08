@@ -15,7 +15,7 @@
             </button>
         </div>
 
-        <table id="table_clazz" data-mobile-responsive="true">
+        <table id="table_course" data-mobile-responsive="true">
         </table>
 
     <!--模态框-->
@@ -37,7 +37,7 @@
 
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">班级名称：</label>
+                            <label class="col-sm-3 control-label">课程名称：</label>
                             <div class="col-sm-8">
                                 <input id="name" name="name" class="form-control" type="text" required>
                             </div>
@@ -45,18 +45,18 @@
 
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">班级介绍：</label>
+                            <label class="col-sm-3 control-label">选修人数：</label>
                             <div class="col-sm-8">
-                                <input id="introduce" name="introduce" class="form-control" type="text" required>
+                                <input id="number" name="number" class="form-control" type="text" required>
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">所属专业：</label>
+                            <label class="col-sm-3 control-label">所属院系：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select id="majorId" name="majorId" class="form-control" required>
+                                <select id="departmentId" name="departmentId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
@@ -92,25 +92,25 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">班级名称：</label>
+                            <label class="col-sm-3 control-label">课程名称：</label>
                             <div class="col-sm-8">
                                 <input name="name" class="form-control" type="text" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">班级介绍：</label>
+                            <label class="col-sm-3 control-label">选修人数：</label>
                             <div class="col-sm-8">
-                                <input name="introduce" class="form-control" type="text" required>
+                                <input name="number" class="form-control" type="text" required>
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">所属专业：</label>
+                            <label class="col-sm-3 control-label">所属院系：</label>
                             <div class="col-sm-8">
                                 <!--<input id="gender" name="gender" class="form-control" type="text">-->
-                                <select name="majorId" class="form-control" required>
+                                <select name="departmentId" class="form-control" required>
                                     <option value="">
                                         --请选择--
                                     </option>
@@ -160,7 +160,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/major/getAll",
+            url: "/department/getAll",
             data: {},
             success: function (data) {
                 if (data.code == 1) {
@@ -174,7 +174,7 @@
                             name.append(option);
                         }
                     }*/
-                    $("select[name='majorId']").each(function () {
+                    $("select[name='departmentId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
                             var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
@@ -189,9 +189,9 @@
     });
 
     function load() {
-        $('#table_clazz')
+        $('#table_course')
             .bootstrapTable({
-                url: "/clazz/list",                      //请求后台的URL（*）
+                url: "/course/list",                      //请求后台的URL（*）
                 method: 'GET',                      //请求方式（*）
                 toolbar: '#toolbar',              //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -237,32 +237,32 @@
                     valign: 'middle',
                 }, {
                     field: 'name',
-                    title: '班级名称',
+                    title: '课程名称',
                 },
                     {
-                        field: 'introduce',
-                        title: '班级简介',
+                        field: 'number',
+                        title: '选修人数',
                     },
                     {
-                        field: 'majorId',
-                        title: '所属专业',
+                        field: 'departmentId',
+                        title: '所属院系',
                         formatter: function (value, row, index) {
-                            var major = {};
+                            var department = {};
                             if (value != null) {
                                 $.ajax({
                                     //cache: true,
                                     async: false,
                                     type: "POST",
-                                    url: "/major/get/" + value,
+                                    url: "/department/get/" + value,
                                     data: {},
                                     success: function (data) {
                                         if (data.code == 1) {
-                                            major = data.data;
+                                            department = data.data;
                                         }
                                     }
                                 });
                             }
-                            return major.name;
+                            return department.name;
                         }
                     }, {
                         title: '操作',
@@ -281,20 +281,20 @@
     }
 
     function reLoad() {
-        $('#table_clazz').bootstrapTable('refresh');
+        $('#table_course').bootstrapTable('refresh');
     }
 
     function get(id) {
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/clazz/get/" + id,
+            url: "/course/get/" + id,
             data: {},
             success: function (data) {
                 if (data.code == 1) {
-                    var clazz = data.data;
-                    for (var key  in clazz) {
-                        $("#" + key).val(clazz[key]);
+                    var course = data.data;
+                    for (var key  in course) {
+                        $("#" + key).val(course[key]);
                     }
                 }
             }
@@ -306,7 +306,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/clazz/update",
+            url: "/course/update",
             data: $('#update').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -325,7 +325,7 @@
         $.ajax({
             //cache: true,
             type: "POST",
-            url: "/clazz/insert",
+            url: "/course/insert",
             data: $('#insert').serialize(),
             success: function (data) {
                 if (data.code == 1) {
@@ -344,7 +344,7 @@
         $.ajax({
             type: 'POST',
             data: {},
-            url: "/clazz/remove/" + id,
+            url: "/course/remove/" + id,
             dataType: "json",
             success: function (data) {
                 if (data.code == 1) {
@@ -358,7 +358,7 @@
     }
 
     function batchRemove() {
-        var rows = $('#table_clazz').bootstrapTable('getSelections');
+        var rows = $('#table_course').bootstrapTable('getSelections');
         if (rows == null) {
             alert("请选中操作的行")
             return;
@@ -374,7 +374,7 @@
             data: {
                 ids: ids
             },
-            url: "/clazz/batchRemove",
+            url: "/course/batchRemove",
             traditional: true,//向后台传递数组时加上
             dataType: "json",
             success: function (data) {
