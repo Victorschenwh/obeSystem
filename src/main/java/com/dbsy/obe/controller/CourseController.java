@@ -25,7 +25,7 @@ public class CourseController {
 
     @RequestMapping("")
     public String course() {
-        return "course";
+        return "baseInfo/course";
     }
 
 
