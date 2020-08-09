@@ -21,6 +21,8 @@ public class DepartmentServiceImp implements DepartmentService {
     @Autowired
     DepartmentMapper departmentMapper;
 
+    private static String table = "department";
+
     @Autowired
     RedisTemplate redisTemplate;
 
