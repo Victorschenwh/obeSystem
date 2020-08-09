@@ -15,7 +15,7 @@
         </commentGenerator>
         <!--jdbc的数据库连接 wg_insert 为数据库名字-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/obe?useUnicode=true&amp;characeterEncoding=utf-8&amp;serverTimezone=UTC"
+                        connectionURL="jdbc:mysql://121.40.115.18:3306/obe?useUnicode=true&amp;characeterEncoding=utf-8&amp;serverTimezone=UTC"
                         userId="root"
                         password="root"></jdbcConnection>
         <!--非必须，类型处理器，在数据库类型和java类型之间的转换控制-->
@@ -79,7 +79,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
 -->
-        <table tableName="major" domainObjectName="Major"
+       <!-- <table tableName="major" domainObjectName="Major"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
@@ -91,7 +91,7 @@
         <table tableName="target" domainObjectName="Target"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+               selectByExampleQueryId="false"></table>-->
 
       <!--  <table tableName="plan" domainObjectName="Plan"
                enableCountByExample="false" enableUpdateByExample="false"
@@ -123,6 +123,11 @@
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>-->
+
+        <table tableName="admin" domainObjectName="Admin"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
 
     </context>
 </generatorConfiguration>
