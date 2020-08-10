@@ -146,13 +146,13 @@
     <div class="row">
         <nav th:replace="menu::menu">
         </nav>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 h-100">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">导入</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">导出</button>
                     </div>
                     <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
                         <span data-feather="calendar"></span>
@@ -161,6 +161,7 @@
                 </div>
             </div>
             <iframe id="frame" src="/teacher" class="h-100 w-100" frameborder="0" scrolling="no"
+                    style="min-height:600px;width:100%;height:100%;"
                     seamless></iframe>
         </main>
 
@@ -175,5 +176,26 @@
     function goto(url) {
         $("#frame").attr("src", url);
     }
+
+    function calcPageHeight(doc) {
+        var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)
+        var sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight)
+        var height = Math.max(cHeight, sHeight)
+        return height
+    }
+
+    //根据ID获取iframe对象
+    var ifr = document.getElementById('frame')
+    ifr.onload = function () {
+        //解决打开高度太高的页面后再打开高度较小页面滚动条不收缩
+        ifr.style.height = '0px';
+        var iDoc = ifr.contentDocument || ifr.document
+        var height = calcPageHeight(iDoc)
+        if (height < 850) {
+            height = 850;
+        }
+        ifr.style.height = height + 'px'
+    }
+
 </script>
 </html>
