@@ -23,4 +23,6 @@ public interface MajorService {
     int batchRemove(int[] ids);
 
     List<Major> getAll();
+
+    List<Major> getMajorsByDpartmentId(int departmentId);
 }

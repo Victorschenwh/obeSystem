@@ -33,4 +33,9 @@ public interface PlanMapper {
 
     @Select("select * from plan")
     List<Plan> getAll();
+
+    @Select("select * from plan where major_id =#{majorId}")
+    List<Plan> getPlansByMajorId(int majorId);
+
+
 }

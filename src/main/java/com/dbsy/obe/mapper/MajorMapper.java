@@ -1,5 +1,6 @@
 package com.dbsy.obe.mapper;
 
+import com.dbsy.obe.pojo.Department;
 import com.dbsy.obe.pojo.Major;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -32,4 +33,7 @@ public interface MajorMapper {
 
     @Select("select * from major")
     List<Major> getAll();
+
+    @Select("select * from major where department_id=#{departmentId}")
+    List<Major> getMajorsByDpartmentId(int departmentId);
 }

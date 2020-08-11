@@ -25,4 +25,6 @@ public interface PlanService {
     int batchRemove(int[] ids);
 
     List<Plan> getAll();
+
+    List<Plan> getPlansByMajorId(int majorId);
 }

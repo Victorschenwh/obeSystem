@@ -80,4 +80,9 @@ public class PointServiceImp implements PointService {
     public List<Point> getAll() {
         return pointMapper.getAll();
     }
+
+    @Override
+    public List<Point> getPointsByRequirementId(int requirementId) {
+        return pointMapper.getPointsByRequirementId(requirementId);
+    }
 }

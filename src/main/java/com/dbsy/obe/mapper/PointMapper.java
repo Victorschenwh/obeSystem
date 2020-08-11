@@ -26,11 +26,14 @@ public interface PointMapper {
     @Delete("delete from point where id = #{id}")
     int delete(int id);
 
-    @Update("update point set introduction=#{introduction},requirement_id=#{requirementId} where id=#{id}")
+    @Update("update point set introduction=#{introduction},synopsis=#{synopsis},requirement_id=#{requirementId} where id=#{id}")
     int update(Point point);
 
     int batchRemove(int[] ids);
 
     @Select("select * from point")
     List<Point> getAll();
+
+    @Select("select * from point where requirement_id=#{requirementId}")
+    List<Point> getPointsByRequirementId(int requirementId);
 }

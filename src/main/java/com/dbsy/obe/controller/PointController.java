@@ -1,4 +1,6 @@
 package com.dbsy.obe.controller;
+import com.dbsy.obe.annotation.Authority;
+import com.dbsy.obe.myenum.Role;
 import com.dbsy.obe.pojo.Point;
 import com.dbsy.obe.service.PointService;
 import com.dbsy.obe.util.News;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/point")
+@Authority({Role.Admin})
 public class PointController {
     @Autowired
     @Qualifier("pointServiceImp")
@@ -25,6 +28,7 @@ public class PointController {
     }
 
 
+    @Authority({Role.Teacher})
     @RequestMapping("/list")
     @ResponseBody
     public Map list(Map map) {
@@ -71,15 +75,29 @@ public class PointController {
         return News.fail("添加失败");
     }
 
+    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
         return News.success("成功", pointService.get(id));
     }
 
+
+    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getAll")
     public Map getAll() {
         return News.success("成功", pointService.getAll());
+    }
+
+    @Authority({Role.Teacher})
+    @ResponseBody
+    @RequestMapping("/getPointsByRequirementId/{requirementId}")
+    public Map getPointsByRequirementId(@PathVariable("requirementId") int requiremntId){
+        if (pointService.getPointsByRequirementId(requiremntId) != null) {
+            return News.success("成功",pointService.getPointsByRequirementId(requiremntId));
+
+        }
+        return News.fail("查找失败");
     }
 }

@@ -84,4 +84,9 @@ public class PlanServiceImp implements PlanService {
     public List<Plan> getAll() {
         return planMapper.getAll();
     }
+
+    @Override
+    public List<Plan> getPlansByMajorId(int majorId) {
+        return planMapper.getPlansByMajorId(majorId);
+    }
 }

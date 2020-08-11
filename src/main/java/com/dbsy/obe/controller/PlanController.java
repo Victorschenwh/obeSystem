@@ -1,4 +1,6 @@
 package com.dbsy.obe.controller;
+import com.dbsy.obe.annotation.Authority;
+import com.dbsy.obe.myenum.Role;
 import com.dbsy.obe.pojo.Plan;
 import com.dbsy.obe.service.PlanService;
 import com.dbsy.obe.util.News;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/plan")
+//@Authority({Role.Admin})
 public class PlanController {
     @Autowired
     @Qualifier("planServiceImp")
@@ -25,6 +28,7 @@ public class PlanController {
     }
 
 
+    @Authority({Role.Teacher})
     @RequestMapping("/list")
     @ResponseBody
     public Map list(Map map) {
@@ -71,15 +75,29 @@ public class PlanController {
         return News.fail("添加失败");
     }
 
+    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
         return News.success("成功", planService.get(id));
     }
 
+    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getAll")
     public Map getAll() {
         return News.success("成功", planService.getAll());
     }
+
+    @Authority({Role.Teacher})
+    @ResponseBody
+    @RequestMapping("/getPlansByMajorId/{majorId}")
+    public Map getPlansByMajorId(@PathVariable("majorId") int majorId){
+        if (planService.getPlansByMajorId(majorId) != null) {
+            return News.success("成功",planService.getPlansByMajorId(majorId));
+
+        }
+        return News.fail("查找失败");
+    }
+
 }

@@ -86,4 +86,10 @@ public class MajorServiceImp implements MajorService {
     public List<Major> getAll() {
         return majorMapper.getAll();
     }
+
+    @Override
+//    @Cacheable(key = "#departmentId", unless = "#result == null")
+    public List<Major> getMajorsByDpartmentId(int departmentId) {
+        return majorMapper.getMajorsByDpartmentId(departmentId);
+    }
 }
