@@ -88,6 +88,30 @@
       &lt;arg column="study_term" javaType="java.lang.String" jdbcType="VARCHAR" /&gt;
     &lt;/constructor&gt;
   &lt;/resultMap&gt;-->
+
+  <select id="list" resultType="com.dbsy.obe.pojo.CoursePlan">
+    select * from course_plan
+    <where>
+      <if test="id != null">
+        or id like concat('%',#{id},'%')
+      </if>
+    </where>
+    <if test="page!=null and pageSize != null">
+      limit (#{page}-1)* #{pageSize},#{pageSize}
+    </if>
+  </select>
+
+  <select id="listCount" resultType="int">
+    select count(*) from course_plan
+    <where>
+      <if test="id != null">
+        or id like concat('%',#{id},'%')
+      </if>
+    </where>
+  </select>
+
+
+
   <delete id="batchRemove">
     delete from course_plan where id in
     <foreach item="id" collection="array" open="(" separator="," close=")">

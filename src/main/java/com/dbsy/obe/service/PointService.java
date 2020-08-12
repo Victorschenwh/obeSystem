@@ -24,4 +24,6 @@ public interface PointService {
     int batchRemove(int[] ids);
 
     List<Point> getAll();
+
+    List<Point> getPointsByRequirementId(int requirementId);
 }

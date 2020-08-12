@@ -9,9 +9,9 @@
     </constructor>
   </resultMap>-->
   <insert id="insert" parameterType="com.dbsy.obe.pojo.Point">
-    insert into point (id, introduction, requirement_id
+    insert into point (id, synopsis,introduction, requirement_id
       )
-    values (#{id,jdbcType=INTEGER}, #{introduction,jdbcType=VARCHAR}, #{requirementId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER},#{synopsis,jdbcType=INTEGER}, #{introduction,jdbcType=VARCHAR}, #{requirementId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.dbsy.obe.pojo.Point">

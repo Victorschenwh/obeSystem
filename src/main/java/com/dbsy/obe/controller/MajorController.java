@@ -1,5 +1,7 @@
 package com.dbsy.obe.controller;
 
+import com.dbsy.obe.annotation.Authority;
+import com.dbsy.obe.myenum.Role;
 import com.dbsy.obe.pojo.Major;
 import com.dbsy.obe.service.MajorService;
 import com.dbsy.obe.util.News;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/major")
+@Authority({Role.Admin})
 public class MajorController {
     @Autowired
     @Qualifier("majorServiceImp")
@@ -26,6 +29,7 @@ public class MajorController {
     }
 
 
+    @Authority({Role.Teacher})
     @RequestMapping("/list")
     @ResponseBody
     public Map list(Map map) {
@@ -72,16 +76,30 @@ public class MajorController {
         return News.fail("添加失败");
     }
 
+    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
         return News.success("成功", majorService.get(id));
     }
 
+    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getAll")
     public Map getAll() {
         return News.success("成功", majorService.getAll());
+    }
+
+
+    @Authority({Role.Teacher})
+    @ResponseBody
+    @RequestMapping("/getMajorsByDpartmentId/{departmentId}")
+    public Map getMajorsByDpartmentId(@PathVariable("departmentId") int departmentId){
+        if (majorService.getMajorsByDpartmentId(departmentId) != null) {
+            return News.success("成功",majorService.getMajorsByDpartmentId(departmentId));
+
+        }
+        return News.fail("查找失败");
     }
 
 

@@ -38,6 +38,13 @@
 
 
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">观测点：</label>
+                            <div class="col-sm-8">
+                                <input id="synopsis" name="synopsis" class="form-control" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">观测点简介：</label>
                             <div class="col-sm-8">
                                 <input id="introduction" name="introduction" class="form-control" type="text" required>
@@ -85,6 +92,13 @@
                     </div>
                     <div class="modal-body">
 
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">观测点：</label>
+                            <div class="col-sm-8">
+                                <input name="synopsis" class="form-control" type="text" required>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">观测点简介：</label>
@@ -164,7 +178,7 @@
                     $("select[name='requirementId']").each(function () {
                         //$(this).text()
                         for (var i = 0; i < list.length; i++) {
-                            var option = "<option value='" + list[i].id + "'>" + list[i].name + "</option>";
+                            var option = "<option value='" + list[i].id + "'>" + list[i].synopsis + "</option>";
                             $(this).append(option);
                         }
                     });
@@ -217,6 +231,9 @@
                     checkbox: true,
                     visible: true                  //是否显示复选框
                 }, {
+                    field: 'synopsis',
+                    title: '观测点',
+                },{
                     field: 'introduction',
                     title: '观测点简介',
                 }, {

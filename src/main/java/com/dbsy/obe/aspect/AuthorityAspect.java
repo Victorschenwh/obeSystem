@@ -16,8 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Component
 @Aspect
@@ -32,6 +31,8 @@ public class AuthorityAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         HttpServletResponse response = attributes.getResponse();
+
+        List<Role> roleList = new ArrayList<>();
         Map map = new HashMap();
 
         Class<?> aClass = pJoinPoint.getTarget().getClass();//获得所在切点的该类的class对象，也就是UserController这个类的对象
@@ -39,7 +40,8 @@ public class AuthorityAspect {
         //判断注解是否在类上
         if (aClass.getAnnotation(Authority.class) != null) {
             Role[] roles = aClass.getAnnotation(Authority.class).value();
-            for (Role role : roles) {
+            roleList.addAll(Arrays.asList(roles));
+/*            for (Role role : roles) {
                 //只要拥有一个角色在线,便能拥有访问权限
                 if (request.getSession().getAttribute(role + "") != null) {
                     //放行
@@ -53,7 +55,7 @@ public class AuthorityAspect {
             }
             map.put("code", -1);
             map.put("msg", "权限不足,请先登录");
-            return map;
+            return map;*/
         }
 
         String name = pJoinPoint.getSignature().getName();
@@ -62,7 +64,24 @@ public class AuthorityAspect {
         Authority authority = method.getAnnotation(Authority.class);//获得该注解
         //判断注解是否在方法上
         if (authority != null) {
-            for (Role role : authority.value()) {
+            roleList.addAll(Arrays.asList(authority.value()));
+           /* for (Role role : authority.value()) {
+                if (request.getSession().getAttribute(role + "") != null) {
+                    return pJoinPoint.proceed();
+                }
+            }
+            if (pJoinPoint.proceed() instanceof String) {
+                response.sendRedirect("/");
+                return null;
+            }
+            //一个角色的登录状态都不存在,拒绝访问
+            map.put("code", -1);
+            map.put("msg", "权限不足");
+            return map;*/
+        }
+
+        if (roleList.size() > 0) {
+            for (Role role : roleList) {
                 if (request.getSession().getAttribute(role + "") != null) {
                     return pJoinPoint.proceed();
                 }
