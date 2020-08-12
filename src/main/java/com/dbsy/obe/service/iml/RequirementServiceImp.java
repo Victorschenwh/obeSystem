@@ -1,6 +1,7 @@
 package com.dbsy.obe.service.iml;
 
 import com.dbsy.obe.mapper.RequirementMapper;
+import com.dbsy.obe.pojo.Major;
 import com.dbsy.obe.pojo.Requirement;
 import com.dbsy.obe.service.RequirementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import java.util.Map;
 @Service("requirementServiceImp")
 @CacheConfig(cacheNames = "requirement")
 public class RequirementServiceImp implements RequirementService {
+
+
     @Autowired
     RequirementMapper requirementMapper;
 
@@ -83,5 +86,10 @@ public class RequirementServiceImp implements RequirementService {
     public List<Requirement> getAll() {
         return requirementMapper.getAll();
     }
-}
 
+    @Override
+//    @Cacheable(key = "#planId", unless = "#result == null")
+    public List<Requirement> getRequirementsByPlanId(int planId) {
+        return requirementMapper.getRequirementsByPlanId(planId);
+    }
+}

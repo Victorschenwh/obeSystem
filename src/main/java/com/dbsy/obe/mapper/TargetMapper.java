@@ -1,5 +1,6 @@
 package com.dbsy.obe.mapper;
 
+import com.dbsy.obe.pojo.Requirement;
 import com.dbsy.obe.pojo.Target;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -32,4 +33,7 @@ public interface TargetMapper {
 
     @Select("select * from target")
     List<Target> getAll();
+
+    @Select("select * from target where plan_id=#{planId}")
+    List<Target> getTargetsByPlanId(int planId);
 }

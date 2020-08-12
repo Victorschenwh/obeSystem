@@ -1,6 +1,7 @@
 package com.dbsy.obe.service.iml;
 
 import com.dbsy.obe.mapper.TargetMapper;
+import com.dbsy.obe.pojo.Requirement;
 import com.dbsy.obe.pojo.Target;
 import com.dbsy.obe.service.TargetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,5 +83,11 @@ public class TargetServiceImp implements TargetService {
     @Override
     public List<Target> getAll() {
         return targetMapper.getAll();
+    }
+
+    @Override
+//    @Cacheable(key = "#planId", unless = "#result == null")
+    public List<Target> getTargetsByPlanId(int planId) {
+        return targetMapper.getTargetsByPlanId(planId);
     }
 }
