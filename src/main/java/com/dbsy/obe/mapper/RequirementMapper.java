@@ -1,5 +1,6 @@
 package com.dbsy.obe.mapper;
 
+import com.dbsy.obe.pojo.Major;
 import com.dbsy.obe.pojo.Requirement;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -32,4 +33,7 @@ public interface RequirementMapper {
 
     @Select("select * from requirement")
     List<Requirement> getAll();
+
+    @Select("select * from requirement where plan_id=#{planId}")
+    List<Requirement> getRequirementsByPlanId(int planId);
 }

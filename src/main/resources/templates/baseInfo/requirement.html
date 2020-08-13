@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="static :: head">
+<head th:replace="static :: head"></head>
 <body>
 <div class="container-fluid">
 
     <div id="toolbar" class="btn-group">
-        <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
-        </button>
 
+        <div th:if="{{session.teacher == null ? true : false}}">
+            <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>增加
+            </button>
+        </div>
+
+        <div th:if="{{session.teacher == null ? true : false}}">
         <button id="btn_delete" type="button" class="btn btn-danger" onclick="batchRemove()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
         </button>
+        </div>
     </div>
 
     <table id="table_requirement" data-mobile-responsive="true">
@@ -227,55 +232,58 @@
                     checkbox: true,
                     visible: true                  //是否显示复选框
                 },
-                //     {
-                //     field: 'id',
-                //     title: 'id',
-                //     width: 120,
-                //     align: 'center',
-                //     valign: 'middle',
-                // },
+                    //     {
+                    //     field: 'id',
+                    //     title: 'id',
+                    //     width: 120,
+                    //     align: 'center',
+                    //     valign: 'middle',
+                    // },
                     {
-                    field: 'synopsis',
-                    title: '要求序号',
-                    sortable: true
-                }, {
-                    field: 'introduction',
-                    title: '要求说明',
-                }, {
-                    field: 'planId',
-                    title: '所属培养方案',
-                    formatter: function (value, row, index) {
-                        var plan = {};
-                        if (value != null) {
-                            $.ajax({
-                                //cache: true,
-                                async: false,
-                                type: "POST",
-                                url: "/plan/get/" + value,
-                                data: {},
-                                success: function (data) {
-                                    if (data.code == 1) {
-                                        plan = data.data;
+                        field: 'synopsis',
+                        title: '要求序号',
+                        sortable: true
+                    }, {
+                        field: 'introduction',
+                        title: '要求说明',
+                    }, {
+                        field: 'planId',
+                        title: '所属培养方案',
+                        formatter: function (value, row, index) {
+                            var plan = {};
+                            if (value != null) {
+                                $.ajax({
+                                    //cache: true,
+                                    async: false,
+                                    type: "POST",
+                                    url: "/plan/get/" + value,
+                                    data: {},
+                                    success: function (data) {
+                                        if (data.code == 1) {
+                                            plan = data.data;
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
+                            return plan != null ? plan.name : "";
                         }
-                        return plan !=null ? plan.name : "";
-                    }
-                },
+                    },
                     {
-                    title: '操作',
-                    field: 'id',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        var e = '<a class="btn btn-primary btn-sm " href="#" mce_href="#"  data-toggle="modal" data-target="#edit" title="编辑" onclick="get(' + row.id + ')">编辑</a> ';
-                        var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
-                            + row.id
-                            + '\')">删除</a> ';
+                        title: '操作',
+                        field: 'id',
+                        align: 'center',
 
-                        return e + d;
-                    }
-                }]
+                        formatter: function (value, row, index) {
+
+
+                            var e = '<a class="btn btn-primary btn-sm " href="#" mce_href="#"  data-toggle="modal" data-target="#edit" title="编辑" onclick="get(' + row.id + ')">编辑</a> ';
+                            var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
+                                + row.id
+                                + '\')">删除</a> ';
+
+                            return e + d;
+                        }
+                    }]
             });
     }
 
@@ -292,7 +300,7 @@
             success: function (data) {
                 if (data.code == 1) {
                     var requirement = data.data;
-                    for (var key  in requirement) {
+                    for (var key in requirement) {
                         $("#" + key).val(requirement[key]);
                     }
                 }

@@ -1,5 +1,6 @@
 package com.dbsy.obe.service;
 
+import com.dbsy.obe.pojo.Major;
 import com.dbsy.obe.pojo.Requirement;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface RequirementService {
     int batchRemove(int[] ids);
 
     List<Requirement> getAll();
+
+    List<Requirement> getRequirementsByPlanId(int planId);
 }
