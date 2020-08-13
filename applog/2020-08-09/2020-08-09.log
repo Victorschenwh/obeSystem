@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 2020-08-09 21:57:11 -Starting ObeApplication on DESKTOP-F2VP93R with PID 13396 (E:\javaworkspace\obeSystem\target\classes started by CWH in E:\javaworkspace\obeSystem)
 2020-08-09 21:57:11 -No active profile set, falling back to default profiles: default
 2020-08-09 21:57:13 -Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -586,3 +587,63 @@
 2020-08-09 22:06:22 -ARGS: [5]	 url: http://127.0.0.1/department/get/5	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.DepartmentController.get
 2020-08-09 22:06:22 -方法的返回值 : {msg=成功, code=1, data=com.dbsy.obe.pojo.Department@52054924}
 2020-08-09 22:06:22 -请求执行完毕......
+=======
+2020-08-09 17:19:35 -Starting ObeApplication on DESK-20180525PM with PID 848 (C:\Users\Administrator\Desktop\obeSystem\target\classes started by Administrator in C:\Users\Administrator\Desktop\obeSystem)
+2020-08-09 17:19:35 -No active profile set, falling back to default profiles: default
+2020-08-09 17:19:36 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-09 17:19:36 -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-08-09 17:19:36 -Finished Spring Data repository scanning in 34ms. Found 0 Redis repository interfaces.
+2020-08-09 17:19:37 -Bean 'redisConfig' of type [com.dbsy.obe.config.RedisConfig$$EnhancerBySpringCGLIB$$e554704f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-08-09 17:19:37 -Tomcat initialized with port(s): 80 (http)
+2020-08-09 17:19:37 -Initializing ProtocolHandler ["http-nio-80"]
+2020-08-09 17:19:37 -Starting service [Tomcat]
+2020-08-09 17:19:37 -Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-08-09 17:19:37 -Initializing Spring embedded WebApplicationContext
+2020-08-09 17:19:37 -Root WebApplicationContext: initialization completed in 2142 ms
+2020-08-09 17:19:39 -Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-09 17:19:39 -Adding welcome page template: index
+2020-08-09 17:19:40 -Starting ProtocolHandler ["http-nio-80"]
+2020-08-09 17:19:40 -Tomcat started on port(s): 80 (http) with context path ''
+2020-08-09 17:19:40 -Started ObeApplication in 5.488 seconds (JVM running for 6.726)
+2020-08-09 17:19:47 -Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-09 17:19:47 -Initializing Servlet 'dispatcherServlet'
+2020-08-09 17:19:47 -Completed initialization in 16 ms
+2020-08-09 17:19:47 -ARGS: []	 url: http://127.0.0.1/index	 method: GET	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.IndexController.index
+2020-08-09 17:19:47 -方法的返回值 : index
+2020-08-09 17:19:47 -请求执行完毕......
+2020-08-09 17:19:47 -ARGS: []	 url: http://127.0.0.1/teacher	 method: GET	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.TeacherController.teacher
+2020-08-09 17:19:47 -方法的返回值 : baseInfo/teacher
+2020-08-09 17:19:47 -请求执行完毕......
+2020-08-09 17:19:47 -ARGS: [{}]	 url: http://127.0.0.1/teacher/list	 method: GET	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.TeacherController.list
+2020-08-09 17:19:47 -ARGS: []	 url: http://127.0.0.1/department/getAll	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.DepartmentController.getAll
+2020-08-09 17:19:47 -ARGS: []	 url: http://127.0.0.1/title/getAll	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.TitleController.getAll
+2020-08-09 17:19:47 -HikariPool-1 - Starting...
+2020-08-09 17:19:48 -HikariPool-1 - Start completed.
+2020-08-09 17:19:48 -方法的返回值 : {msg=职称信息获取成功, code=1, data=[com.dbsy.obe.pojo.Title@39782c2f, com.dbsy.obe.pojo.Title@3701eeed]}
+2020-08-09 17:19:48 -请求执行完毕......
+2020-08-09 17:19:48 -方法的返回值 : {msg=学院数据请求成功, code=1, data=[com.dbsy.obe.pojo.Department@5349bafe]}
+2020-08-09 17:19:48 -请求执行完毕......
+2020-08-09 17:19:48 -方法的返回值 : {total=1, rows=[com.dbsy.obe.pojo.Teacher@1d52a162]}
+2020-08-09 17:19:48 -请求执行完毕......
+2020-08-09 17:19:48 -ARGS: [5]	 url: http://127.0.0.1/department/get/5	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.DepartmentController.get
+2020-08-09 17:19:49 -方法的返回值 : {msg=成功, code=1, data=com.dbsy.obe.pojo.Department@4d5f0802}
+2020-08-09 17:19:49 -请求执行完毕......
+2020-08-09 17:19:49 -ARGS: [1]	 url: http://127.0.0.1/title/get/1	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.TitleController.get
+2020-08-09 17:19:49 -方法的返回值 : {msg=成功, code=1, data=com.dbsy.obe.pojo.Title@1775a910}
+2020-08-09 17:19:49 -请求执行完毕......
+2020-08-09 17:19:50 -ARGS: []	 url: http://127.0.0.1/major	 method: GET	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.MajorController.major
+2020-08-09 17:19:50 -方法的返回值 : baseInfo/major
+2020-08-09 17:19:50 -请求执行完毕......
+2020-08-09 17:19:50 -ARGS: [{}]	 url: http://127.0.0.1/major/list	 method: GET	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.MajorController.list
+2020-08-09 17:19:50 -ARGS: []	 url: http://127.0.0.1/department/getAll	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.DepartmentController.getAll
+2020-08-09 17:19:50 -方法的返回值 : {msg=学院数据请求成功, code=1, data=[com.dbsy.obe.pojo.Department@76629f2f]}
+2020-08-09 17:19:50 -请求执行完毕......
+2020-08-09 17:19:50 -方法的返回值 : {total=2, rows=[com.dbsy.obe.pojo.Major@4de2dd7a, com.dbsy.obe.pojo.Major@1bb16d6c]}
+2020-08-09 17:19:50 -请求执行完毕......
+2020-08-09 17:19:50 -ARGS: [5]	 url: http://127.0.0.1/department/get/5	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.DepartmentController.get
+2020-08-09 17:19:50 -方法的返回值 : {msg=成功, code=1, data=com.dbsy.obe.pojo.Department@2d8f25cf}
+2020-08-09 17:19:50 -请求执行完毕......
+2020-08-09 17:19:50 -ARGS: [5]	 url: http://127.0.0.1/department/get/5	 method: POST	 ip: 127.0.0.1	ClassName.method: com.dbsy.obe.controller.DepartmentController.get
+2020-08-09 17:19:50 -方法的返回值 : {msg=成功, code=1, data=com.dbsy.obe.pojo.Department@4e879766}
+2020-08-09 17:19:50 -请求执行完毕......
+>>>>>>> Stashed changes
