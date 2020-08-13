@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/major")
-@Authority({Role.Admin})
+//@Authority({Role.Admin})
 public class MajorController {
     @Autowired
     @Qualifier("majorServiceImp")
@@ -29,7 +29,7 @@ public class MajorController {
     }
 
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @RequestMapping("/list")
     @ResponseBody
     public Map list(Map map) {
@@ -76,14 +76,14 @@ public class MajorController {
         return News.fail("添加失败");
     }
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
         return News.success("成功", majorService.get(id));
     }
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getAll")
     public Map getAll() {
@@ -91,7 +91,7 @@ public class MajorController {
     }
 
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getMajorsByDpartmentId/{departmentId}")
     public Map getMajorsByDpartmentId(@PathVariable("departmentId") int departmentId){

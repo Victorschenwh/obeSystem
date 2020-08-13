@@ -28,7 +28,7 @@ public class PlanController {
     }
 
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @RequestMapping("/list")
     @ResponseBody
     public Map list(Map map) {
@@ -75,7 +75,7 @@ public class PlanController {
         return News.fail("添加失败");
     }
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
@@ -89,7 +89,7 @@ public class PlanController {
         return News.success("成功", planService.getAll());
     }
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getPlansByMajorId/{majorId}")
     public Map getPlansByMajorId(@PathVariable("majorId") int majorId){

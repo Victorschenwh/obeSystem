@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/point")
-@Authority({Role.Admin})
+//@Authority({Role.Admin})
 public class PointController {
     @Autowired
     @Qualifier("pointServiceImp")
@@ -28,7 +28,7 @@ public class PointController {
     }
 
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @RequestMapping("/list")
     @ResponseBody
     public Map list(Map map) {
@@ -75,7 +75,7 @@ public class PointController {
         return News.fail("添加失败");
     }
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/get/{id}")
     public Map get(@PathVariable("id") int id) {
@@ -83,14 +83,14 @@ public class PointController {
     }
 
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getAll")
     public Map getAll() {
         return News.success("成功", pointService.getAll());
     }
 
-    @Authority({Role.Teacher})
+//    @Authority({Role.Teacher})
     @ResponseBody
     @RequestMapping("/getPointsByRequirementId/{requirementId}")
     public Map getPointsByRequirementId(@PathVariable("requirementId") int requiremntId){
