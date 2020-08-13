@@ -21,7 +21,7 @@ import java.util.Map;
 @Authority({Role.Admin})
 public class RequirementController {
 
-
+//xdj
     @Autowired
     @Qualifier("requirementServiceImp")
     RequirementService requirementService;
